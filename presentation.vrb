@@ -1,0 +1,16 @@
+\frametitle{Stitch-FVS-4CL Algorithm}
+\begin{algorithm}[H]
+  \caption{Stitch-FVS-4CL}
+    \begin{algorithmic}[1]
+      \REQUIRE Vertex-weighted planar graph $(G, w:V(G) \to \mathbb{N})$, a feasible solution $S_1$ on $G$, and a vertex set $J \subseteq V(G)$
+      \ENSURE Feasible solution $S'$ on $G$, such that for all feasible solutions $S^*$,\\
+      \hspace{0.5em} $w(S') \leq w(S^* \oplus^{2}_{G,J} S_1)$
+      \STATE $H \leftarrow G[N^{2}_{G}[J] \setminus (S_1 \setminus J)]$
+      \STATE Let $S_2$ be the output of algorithm $A$ on input $(H, w)$
+      \IF{$w(S_2 \oplus^{2}_{G,J} S_1) < w(S_1)$}
+          \RETURN $S_2 \oplus^{2}_{G,J} S_1$
+      \ELSE
+          \RETURN $S_1$
+      \ENDIF
+    \end{algorithmic}
+  \end{algorithm}
