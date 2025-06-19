@@ -1,5 +1,5 @@
 \beamer@sectionintoc {1}{Problem Overview}{3}{0}{1}
 \beamer@sectionintoc {2}{Approximation Schemes}{7}{0}{2}
 \beamer@sectionintoc {3}{Fixed-Parameter Tractability of FVS-BCL}{13}{0}{3}
-\beamer@sectionintoc {4}{Certified Algorithms}{25}{0}{4}
-\beamer@sectionintoc {5}{Conclusion}{36}{0}{5}
+\beamer@sectionintoc {4}{Certified Algorithms}{26}{0}{4}
+\beamer@sectionintoc {5}{Conclusion}{39}{0}{5}

@@ -485,6 +485,12 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
 
 \end{frame}
 
+\begin{frame}
+  \centering
+  \vfill
+  \LARGE \textbf{Dynamic Programming Algorithm for FVS-4CL over Nice Tree Decompositions}
+  \vfill
+\end{frame}
 
 \begin{frame}{Algorithm Design for FVS-4CL}
 \footnotesize
@@ -833,16 +839,37 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
 \end{frame}
 
 
-
-
 \section{Certified Algorithms}
 
-\begin{frame}{Certified Algorithms}
+\begin{frame}
+  \centering
+  \vfill
+  \LARGE \textbf{Beyond the Worst-Case Analysis}
+  \vfill
+\end{frame}
+
+\begin{frame}{Beyond the Worst-Case Analysis}
   \begin{itemize}
     \item Perturbation resilience
     \item $m$-Stitching and $\Pi$-$m$-Stitching
     \item Certified Algorithms
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Definitions: $\gamma$-Perturbation and $\gamma$-Stability}
+  \begin{definition}[$\gamma$-Perturbation for Vertex-Optimization Problems]
+  Let $(G, w)$ be a weighted graph. For any $\gamma \in \mathbb{R}_{\geq 0}$, a \textbf{$\gamma$-perturbation} of the weight function 
+  $w : V \to \mathbb{N}$ is a function $w' : V \to \mathbb{R}$ such that:
+  \[
+  w(v) \leq w'(v) \leq \gamma \cdot w(v) \quad \forall v \in V.
+  \]
+  \end{definition}
+  \vspace{0.5em}
+  \begin{definition}[$\gamma$-Stability]
+  Let $\Pi$ be a vertex-minimization problem. For any $\gamma \in \mathbb{R}_{\geq 0}$, a weighted graph $(G, w)$ is called a 
+  \textbf{$\gamma$-stable instance} of $\Pi$ if it admits a unique optimal solution $S$ that remains optimal under all 
+  $\gamma$-perturbations of the weight function $w$.
+  \end{definition}
 \end{frame}
 
 
@@ -1066,7 +1093,8 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
 \end{frame}
 
 \begin{frame}{Meta-Theorem for Minor-Closed Graph Classes}
-\begin{definition}
+
+\begin{theorem}[Meta-Theorem for Minor-Closed Graph Classes]
 Let $\mathcal{G}$ be a minor-closed graph class whose local treewidth is bounded by $g(r) = \lambda \cdot r$, for fixed $\lambda \in \mathbb{R}$ and $r \in \mathbb{N}$.
 
 Let $\Pi$ be a vertex-minimization problem such that:
@@ -1080,7 +1108,8 @@ Let $\Pi$ be a vertex-minimization problem such that:
 Then, for each $\epsilon > 0$, there exists a $(1 + \epsilon)$-certified algorithm for $\Pi$ 
 running in time $f(\lambda \cdot m / \epsilon) \cdot |V(G)|^{\mathcal{O}(1)}$ on any input 
 $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounded weights.
-\end{definition}
+\end{theorem}
+
 \end{frame}
 
 \begin{frame}{Guessable Problems}
@@ -1603,7 +1632,8 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
 \end{frame}
 
 \begin{frame}{Meta-Theorem for Minor-Closed Graph Classes}
-\begin{definition}
+
+\begin{theorem}[Meta-Theorem for Minor-Closed Graph Classes]
 Let $\mathcal{G}$ be a minor-closed graph class whose local treewidth is bounded by $g(r) = \lambda \cdot r$, for fixed $\lambda \in \mathbb{R}$ and $r \in \mathbb{N}$.
 
 Let $\Pi$ be a vertex-minimization problem such that:
@@ -1617,7 +1647,8 @@ Let $\Pi$ be a vertex-minimization problem such that:
 Then, for each $\epsilon > 0$, there exists a $(1 + \epsilon)$-certified algorithm for $\Pi$ 
 running in time $f(\lambda \cdot m / \epsilon) \cdot |V(G)|^{\mathcal{O}(1)}$ on any input 
 $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounded weights.
-\end{definition}
+\end{theorem}
+
 \end{frame}
 
 \begin{frame}[fragile]{{$(1+\epsilon)$}-Certified Algorithm for FVS-4CL}
@@ -1649,14 +1680,40 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
 \section{Conclusion}
 
 \begin{frame}{Summary of Contributions}
-  \begin{itemize}
-    \item 
-  \end{itemize}
+\begin{itemize}
+    \item Applied \textbf{Baker's technique} to establish an 
+    \textbf{EPTAS for the FVS-BCL and FVS-4CL problems} in planar graphs.
+    
+    \item Proved that the \textbf{FVS-4CL problem is tractable} via 
+    \textbf{dynamic programming over nice tree decompositions}, and that the 
+    \textbf{FVS-BCL problem is tractable} via a formulation in 
+    \textbf{monadic second-order logic (MSOL)}.
+    
+    \item Designed an algorithm for computing 
+    \textbf{(1 + $\varepsilon$)-certified solutions} for both problems.
+
+\end{itemize}
 \end{frame}
+
 
 \begin{frame}{Future Work}
   \begin{itemize}
-    \item 
+    \item Extend the DP algorithm over nice tree decompositions to FVS-BCL
+    \item Improve the current algorithm that has a running time of 
+    $2^{\mathcal{O}(\tw^2)} \cdot n^{\mathcal{O}(1)}$
+    \begin{itemize} 
+    \item Cut \& Count technique, which obtained a 
+    $3^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ randomized algorithm
+    \textbf{(Cygan et al., 2011)}  
+
+    \item Deterministic 
+    $2^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ rank-based approach
+    \textbf{(Bodlaender et al., 2015)}
+
+    \end{itemize}
+    \item  Improve the certified algorithm for FVS-BCL. 
+    In particular, it would be valuable to develop an approach that eliminates the current 
+    reliance on the polynomially-bounded weights constraint
   \end{itemize}
 \end{frame}
 
