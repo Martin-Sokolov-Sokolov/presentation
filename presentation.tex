@@ -137,7 +137,9 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
         \FOR{each $i = 0$ to $\ell-1$} \label{alg3:for-loop}
             \STATE Let $G_{i, j}$ be the subgraph induced on vertices at levels
             $j \cdot \ell + i$ through $(j+1) \cdot \ell + i + 1$ for all $j \geq 0$. \label{alg3:line4}
-            \STATE Let $S_{i, j}$ be the minimum unweighted \textsc{FVS-4CL} of $G_{i, j}$ using Algorithm~\ref{alg:dp} as a subroutine (weights are all ones). \label{alg3:subroutine}
+            \STATE Let $S_{i, j}$ be the minimum unweighted \textsc{FVS-4CL} of 
+            $G_{i, j}$ using Algorithm~\ref{alg:dp} as a subroutine (weights are all ones). 
+            \label{alg3:subroutine}
             \STATE Let $S_i = \bigcup_{j} S_{i, j}$ \label{alg3:line6}
             \STATE $S \leftarrow S \cup \{S_i\}$ \label{alg3:line7}
         \ENDFOR
@@ -493,6 +495,7 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
 \end{frame}
 
 \begin{frame}{Algorithm Design for FVS-4CL}
+  \label{alg:dp}
 \footnotesize
 \begin{enumerate}
     \item \textbf{Solution:} For the FVS-4CL problem, a solution for graph \(G\) is a set \(F\) such that \(G - F\) contains no 4-cycles.
@@ -864,12 +867,49 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
   w(v) \leq w'(v) \leq \gamma \cdot w(v) \quad \forall v \in V.
   \]
   \end{definition}
+  \textbf{the number may be different for each parameter!}
   \vspace{0.5em}
   \begin{definition}[$\gamma$-Stability]
   Let $\Pi$ be a vertex-minimization problem. For any $\gamma \in \mathbb{R}_{\geq 0}$, a weighted graph $(G, w)$ is called a 
   \textbf{$\gamma$-stable instance} of $\Pi$ if it admits a unique optimal solution $S$ that remains optimal under all 
   $\gamma$-perturbations of the weight function $w$.
   \end{definition}
+\end{frame}
+
+\begin{frame}{Definition: Certified Algorithm}
+\begin{definition}[Certified Algorithm]
+A \textbf{$\gamma$-certified solution} to an instance $(G, w)$ of a weighted vertex-optimization problem $\Pi$ is a pair $(S, w')$,  
+where:
+\begin{itemize}
+    \item $w'$ is a \textbf{$\gamma$-perturbation} of the original weight function $w$, and
+    \item $S$ is an \textbf{optimal solution} for the instance $(G, w')$.
+\end{itemize}
+
+\vspace{0.5em}
+A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to a $\gamma$-certified solution.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Certified Algorithms and Perturbation Resilience}
+  \textbf{Perturbation-Resilient Instances}
+  \begin{itemize}
+      \item An instance $I$ is \textbf{$\gamma$-perturbation resilient} if:
+      \begin{itemize}
+          \item $I$ has a \textbf{unique optimal solution}, and
+          \item every $\gamma$-perturbation of $I$ preserves that optimal solution.
+      \end{itemize}
+  \end{itemize}
+
+  \vspace{1em}
+  \textbf{Certified Algorithms}
+  \begin{itemize}
+      \item A \textbf{$\gamma$-certified algorithm}:
+      \begin{itemize}
+          \item \textbf{Exactly solves all $\gamma$-perturbation-resilient instances}.
+          \item Always returns a \textbf{$\gamma$-approximate solution}.
+          \item Gives a \textbf{$\gamma$-approximate solution} for the compliment problem.
+      \end{itemize}
+  \end{itemize}
 \end{frame}
 
 

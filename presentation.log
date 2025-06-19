@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.13)  19 JUN 2025 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.9.13)  19 JUN 2025 17:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1074,7 +1074,7 @@ Overfull \hbox (186.90292pt too wide) in paragraph at lines 124--124
 \openout4 = `presentation.vrb'.
 
 
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 147--147
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 149--149
  [][][][]  
  []
 
@@ -1083,11 +1083,8 @@ Overfull \hbox (186.90292pt too wide) in paragraph at lines 147--147
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 (Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 8.
 
-
-LaTeX Warning: Reference `alg:dp' on page 8 undefined on input line 17.
-
 )
-Overfull \vbox (8.08443pt too high) detected at line 147
+Overfull \vbox (8.08443pt too high) detected at line 149
  []
 
 
@@ -1100,7 +1097,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 304--304
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 306--306
  [][][][]  
  []
 
@@ -1114,7 +1111,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 336--336
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 338--338
  [][][][]  
  []
 
@@ -1128,7 +1125,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [10
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 366--366
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 368--368
  [][][][]  
  []
 
@@ -1142,7 +1139,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [11
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 382--382
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 384--384
  [][][][]  
  []
 
@@ -1156,7 +1153,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [12
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 391--391
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 393--393
  [][][][]  
  []
 
@@ -1170,7 +1167,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [13
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 399--399
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 401--401
  [][][][]  
  []
 
@@ -1184,7 +1181,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [14
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 412--412
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 414--414
  [][][][]  
  []
 
@@ -1198,7 +1195,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [15
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 427--427
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 429--429
  [][][][]  
  []
 
@@ -1212,7 +1209,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [16
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 442--442
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 444--444
  [][][][]  
  []
 
@@ -1226,7 +1223,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 460--460
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 462--462
  [][][][]  
  []
 
@@ -1240,7 +1237,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [18
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 486--486
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 488--488
  [][][][]  
  []
 
@@ -1254,7 +1251,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [19
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 493--493
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 495--495
  [][][][]  
  []
 
@@ -1268,7 +1265,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [20
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 525--525
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 528--528
  [][][][]  
  []
 
@@ -1282,7 +1279,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [21
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 577--577
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 580--580
  [][][][]  
  []
 
@@ -1296,19 +1293,19 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [22
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 641--641
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 644--644
  [][][][]  
  []
 
-LaTeX Font Info:    Trying to load font information for OMS+cmss on input line 641.
-LaTeX Font Info:    No file OMScmss.fd. on input line 641.
+LaTeX Font Info:    Trying to load font information for OMS+cmss on input line 644.
+LaTeX Font Info:    No file OMScmss.fd. on input line 644.
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 641.
+(Font)              for symbol `textbraceleft' on input line 644.
 
 
-Overfull \hbox (17.11057pt too wide) in paragraph at lines 641--641
+Overfull \hbox (17.11057pt too wide) in paragraph at lines 644--644
 []$[]$$[]$$[]$  
  []
 
@@ -1322,12 +1319,12 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [23
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 747--747
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 750--750
  [][][][]  
  []
 
 
-Overfull \hbox (65.33492pt too wide) in paragraph at lines 747--747
+Overfull \hbox (65.33492pt too wide) in paragraph at lines 750--750
 [][] 
  []
 
@@ -1341,12 +1338,12 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 839--839
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 842--842
  [][][][]  
  []
 
 
-Overfull \hbox (37.56694pt too wide) in paragraph at lines 839--839
+Overfull \hbox (37.56694pt too wide) in paragraph at lines 842--842
  [][] 
  []
 
@@ -1360,7 +1357,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [25
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 849--849
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 852--852
  [][][][]  
  []
 
@@ -1374,7 +1371,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [26
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 857--857
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 860--860
  [][][][]  
  []
 
@@ -1388,7 +1385,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [27
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 873--873
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 877--877
  [][][][]  
  []
 
@@ -1402,7 +1399,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [28
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 887--887
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 891--891
  [][][][]  
  []
 
@@ -1416,17 +1413,8 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [29
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1093--1093
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 913--913
  [][][][]  
- []
-
-
-Overfull \hbox (1.7736pt too wide) in paragraph at lines 1093--1093
- [][] 
- []
-
-
-Overfull \vbox (3.23221pt too high) detected at line 1093
  []
 
 
@@ -1439,7 +1427,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [30
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1113--1113
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 927--927
  [][][][]  
  []
 
@@ -1453,8 +1441,17 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [31
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1125--1125
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1133--1133
  [][][][]  
+ []
+
+
+Overfull \hbox (1.7736pt too wide) in paragraph at lines 1133--1133
+ [][] 
+ []
+
+
+Overfull \vbox (3.23221pt too high) detected at line 1133
  []
 
 
@@ -1467,7 +1464,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [32
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1137--1137
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1153--1153
  [][][][]  
  []
 
@@ -1481,18 +1478,11 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [33
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1139--1139
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1165--1165
  [][][][]  
  []
 
-\openout4 = `presentation.vrb'.
 
-
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1155--1155
- [][][][]  
- []
-
-(presentation.vrb)
 
 
 Overfull \hbox (186.90292pt too wide) has occurred while \output is active
@@ -1502,7 +1492,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [34
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1395--1395
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1177--1177
  [][][][]  
  []
 
@@ -1516,11 +1506,18 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [35
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1632--1632
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1179--1179
  [][][][]  
  []
 
+\openout4 = `presentation.vrb'.
 
+
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1195--1195
+ [][][][]  
+ []
+
+(presentation.vrb)
 
 
 Overfull \hbox (186.90292pt too wide) has occurred while \output is active
@@ -1530,7 +1527,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [36
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1652--1652
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1435--1435
  [][][][]  
  []
 
@@ -1544,19 +1541,8 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [37
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1654--1654
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1672--1672
  [][][][]  
- []
-
-\openout4 = `presentation.vrb'.
-
-
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1677--1677
- [][][][]  
- []
-
-(presentation.vrb)
-Overfull \vbox (30.81529pt too high) detected at line 1677
  []
 
 
@@ -1569,7 +1555,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [38
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1696--1696
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1692--1692
  [][][][]  
  []
 
@@ -1583,8 +1569,19 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [39
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1718--1718
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1694--1694
  [][][][]  
+ []
+
+\openout4 = `presentation.vrb'.
+
+
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1717--1717
+ [][][][]  
+ []
+
+(presentation.vrb)
+Overfull \vbox (30.81529pt too high) detected at line 1717
  []
 
 
@@ -1597,7 +1594,7 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
 [40
 
 ]
-Overfull \hbox (186.90292pt too wide) in paragraph at lines 1725--1725
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1736--1736
  [][][][]  
  []
 
@@ -1609,6 +1606,34 @@ Overfull \hbox (186.90292pt too wide) has occurred while \output is active
  []
 
 [41
+
+]
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1758--1758
+ [][][][]  
+ []
+
+
+
+
+Overfull \hbox (186.90292pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[42
+
+]
+Overfull \hbox (186.90292pt too wide) in paragraph at lines 1765--1765
+ [][][][]  
+ []
+
+
+
+
+Overfull \hbox (186.90292pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[43
 
 ]
 \tf@nav=\write6
@@ -1629,27 +1654,21 @@ L3 programming layer <2024-08-16>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `presentation.out' has not changed.
 (rerunfilecheck)             Checksum: B7AD7700E9CC0FC9D0E597B677DF83E4;763.
  ) 
 Here is how much of TeX's memory you used:
- 31181 strings out of 473899
- 639964 string characters out of 5726500
+ 31195 strings out of 473899
+ 640306 string characters out of 5726500
  1985960 words of memory out of 5000000
- 53295 multiletter control sequences out of 15000+600000
+ 53305 multiletter control sequences out of 15000+600000
  579632 words of font info for 112 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,27n,123p,461b,2519s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{alg:dp} has been referenced but does not exist, replaced by a fixed one
-
 <C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss17.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmss9.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi12.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi17.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi8.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmssi9.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on presentation.pdf (41 pages, 641992 bytes).
+Output written on presentation.pdf (43 pages, 658517 bytes).
 PDF statistics:
- 1517 PDF objects out of 1728 (max. 8388607)
- 107 named destinations out of 1000 (max. 500000)
- 611 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1586 PDF objects out of 1728 (max. 8388607)
+ 111 named destinations out of 1000 (max. 500000)
+ 647 words of extra memory for PDF output out of 10000 (max. 10000000)
 
