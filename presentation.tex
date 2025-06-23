@@ -26,6 +26,8 @@
 
 \newcommand{\tw}{\operatorname{tw}}
 \newtheorem{result}{Result}
+\newcommand{\backupbegin}{}
+\newcommand{\backupend}{}
 
 \begin{document}
 
@@ -54,6 +56,58 @@
 \textcolor{red}{\textbf{FVS-4CL}} is the primary focus of this work.\\
 We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
 (Our hope in the beginning was generalizing our results to \textcolor{red!50}{\textbf{FVS}}).
+\end{frame}
+
+\begin{frame}{FVS-4CL on a 5x5 grid}
+  \centering
+  \begin{tikzpicture}[scale=1.2, every node/.style={circle, draw, minimum size=6mm},
+                      rednode/.style={circle, draw=red, fill=red!30, thick, minimum size=6mm},
+                      font=\small]
+
+\foreach \x in {0,1,2,3,4} {
+  \foreach \y in {0,1,2,3,4} {
+
+    \ifnum\x=1
+      \ifnum\y=1
+        \node[rednode] (n\x\y) at (\x,-\y) {};
+      \else
+        \ifnum\y=3
+          \node[rednode] (n\x\y) at (\x,-\y) {};
+        \else
+          \node (n\x\y) at (\x,-\y) {};
+        \fi
+      \fi
+    \else
+      \ifnum\x=3
+        \ifnum\y=1
+          \node[rednode] (n\x\y) at (\x,-\y) {};
+        \else
+          \ifnum\y=3
+            \node[rednode] (n\x\y) at (\x,-\y) {};
+          \else
+            \node (n\x\y) at (\x,-\y) {};
+          \fi
+        \fi
+      \else
+        \node (n\x\y) at (\x,-\y) {};
+      \fi
+    \fi
+
+  }
+}
+
+  % Draw edges
+  \foreach \x in {0,1,2,3,4}
+    \foreach \y in {0,1,2,3,4} {
+      \ifnum\x<4
+        \draw (n\x\y) -- (n\the\numexpr\x+1\relax\y);
+      \fi
+      \ifnum\y<4
+        \draw (n\x\y) -- (n\x\the\numexpr\y+1\relax);
+      \fi
+  }
+
+  \end{tikzpicture}
 \end{frame}
 
 \begin{frame}{Approximation Algorithms for Feedback Vertex Set (FVS)}
@@ -305,67 +359,26 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
     \end{columns}
 \end{frame}
 
-\begin{frame}{Bounds on the Optimum Solution (Unweighted Case)}
-    \footnotesize
-    \begin{lemma}[Bound on the Optimum Solution in Subgraphs]
-    \label{lemma:opt-unweighted-fvs-4cl}
+\begin{frame}{Approximation Bound via Subgraph Solutions}
+    \begin{itemize}
+      \item Let \( S_{i,j} \) be the minimum unweighted feedback vertex set (FVS-4CL)  
+        for subgraph \( G_{i,j} \), computed using Algorithm~\ref{alg:dp}.
 
-    Let \( S_{i,j} \) be the minimum unweighted feedback vertex set (FVS-4CL)
-    for subgraph \( G_{i,j} \), computed using 
-    Algorithm~\ref{alg:unweighted_feedback_vertex_set_global}, and let 
-    \( F \equiv \text{OPT} \) be the optimum solution for the full graph \( G \).
+      \item Let \( F \equiv \text{OPT} \) be the optimum solution for the full graph \( G \),  
+        and define \( F_{i,j} := F \cap V(G_{i,j}) \), the restriction of \( F \) to subgraph \( G_{i,j} \).
 
-    Define \( F_{i,j} := F \cap V(G_{i,j}) \), i.e., the restriction of the global solution \( F \) to the subgraph \( G_{i,j} \).
-
-    Then:
-    \[
-    |S_{i,j}| \leq |F_{i,j}|
-    \]
-    \end{lemma}
-
-    \begin{result}[Optimum solution bound for the whole graph]
-    \label{result-two}
-
-    Let \( S_i \) be the union of optimal solutions defined on Line~\ref{alg3:line6} of Algorithm~\ref{alg:unweighted_feedback_vertex_set_global} 
-    for some shift \( i \). 
-    Let \( F \equiv \text{OPT} \) be the optimum solution in \( G \) and let \( F_{i,j} = G_{i,j} \cap F \).
-    For those sets it holds that:
-    \[
-    |S_i| \leq \sum_j |S_{i,j}| \leq \sum_j |F_{i,j}|
-    \]
-    \end{result}
+      \vspace{1em}
+      \item We obtain the following bound on the total solution size:
+      \[
+      \underbrace{|S_{i^*}| \leq \sum\limits_{j} |S_{i^*, j}|}_{\text{by Lemma~\ref{lemma:opt-unweighted-fvs-4cl} and Result~\ref{result-two}}}
+      \underbrace{\leq \sum\limits_{j} |F_{i^*, j}|}_{\text{by Lemma~\ref{lemma-two}}}
+      \underbrace{\leq \left(1 + \frac{2}{\ell}\right) \cdot |F|}_{\text{by Lemma~\ref{lemma-three}}}
+      = (1 + 2\epsilon)\cdot |F|
+      \]
+    \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Bounds on the Optimum Solution (Unweighted Case)}
-    \footnotesize
-    \begin{lemma}[Bound for the vertices on the boundaries (Unweighted Case)]
-        \label{lemma-two}
-
-        Let $F_i = F \cap \{\text{vertices at levels } i \bmod \ell\}$. 
-        The sets $F_i$ are disjoint and $\bigcup_i F_i = F$.
-
-        We claim that:
-        \[
-            \exists q \in \{0, 1, \dots, \ell-1\} : |F_q| + |F_{q+1}| \leq \frac{2}{\ell} \cdot |F| \text{.}
-        \]
-    \end{lemma}
-
-    \begin{lemma}[Bound for the cardinality of the intersection sets]
-    \label{lemma-three}
-    Let \( F \equiv \text{OPT} \) be the optimal solution and \( F_{i,j} = F \cap G_{i,j} \) be the intersection 
-    sets with the subgraphs. Then we have: 
-    \[
-    \sum_j |F_{i^*, j}| \leq |F| + \frac{2}{\ell} \cdot |F|
-    \]
-    for some specific integer \( i^* \).
-    \end{lemma}
-
-    \[
-    |S_{i^*}| \leq \sum\limits_{j} |S_{i^*, j}| \leq \sum\limits_{j} |F_{i^*, j}| \leq (1 + \frac{2}{\ell}) \cdot |F| = (1 + 2\epsilon)\cdot\left|F\right|
-    \]
-
-\end{frame}
 
 \begin{frame}{Weighted Bounds for FVS-BCL Problems}
 
@@ -462,18 +475,13 @@ w(S_{i^*}) \leq \sum\limits_j w(S_{i^*, j}) \leq \sum\limits_j w(F_{i^*, j}) \le
 \end{frame}
 
 \begin{frame}{Courcelle's Theorem and MSOL Solvability of FVS-$\rho$CL}
-\footnotesize
 
-\begin{theorem}[Courcelle's theorem]
-\label{theorem:courcelle}
-Assume that $\phi$ is a MSOL formula and $G$ is an $n$-vertex graph, with an evaluation 
-of all free variables of $\phi$. Suppose a tree decomposition of $G$ of width $t$ is given. 
-Then there exists an algorithm that verifies whether $\phi$ is satisfied in $G$ in time:
-\[
-    f(\|\phi\|, t) \cdot n
-\]
-for some computable function $f$.
-\end{theorem}
+Courcelle's Theorem states that any graph property definable in MSOL can be decided in linear time on graphs of bounded treewidth.
+
+\begin{quote}
+\hfill \textbf{Theorem 7.11, p.~183} \\
+\hfill \textbf{Parameterized Algorithms, Cygan et al., 2015}
+\end{quote}
 
 \begin{corollary}[MSOL Solvability of FVS-$\rho$CL on Bounded-Treewidth Graphs]
 \label{cor:msol-fvs-rho}
@@ -484,6 +492,7 @@ Then the minimum-weight set breaking all $\rho$-cycles (FVS-$\rho$CL) can be com
 \]
 for some computable function $f$ depending only on $\rho$ and $\tw$.
 \end{corollary}
+
 
 \end{frame}
 
@@ -688,7 +697,7 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
     0 & \( \emptyset \) & \( \emptyset \) & 0 \\
     \hline
     % Introduce a
-    1 & \( a \) & \( \emptyset \) & 1 \\
+    1 & \( \{ a \} \) & \( \emptyset \) & 1 \\
     1 & \( \emptyset \) & \( \emptyset \) & 0 \\
     \hline
     % Introduce b
@@ -892,25 +901,12 @@ A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to
 \end{frame}
 
 \begin{frame}{Certified Algorithms and Perturbation Resilience}
-  \textbf{Perturbation-Resilient Instances}
-  \begin{itemize}
-      \item An instance $I$ is \textbf{$\gamma$-perturbation resilient} if:
-      \begin{itemize}
-          \item $I$ has a \textbf{unique optimal solution}, and
-          \item every $\gamma$-perturbation of $I$ preserves that optimal solution.
-      \end{itemize}
-  \end{itemize}
-
-  \vspace{1em}
-  \textbf{Certified Algorithms}
-  \begin{itemize}
-      \item A \textbf{$\gamma$-certified algorithm}:
-      \begin{itemize}
-          \item \textbf{Exactly solves all $\gamma$-perturbation-resilient instances}.
-          \item Always returns a \textbf{$\gamma$-approximate solution}.
-          \item Gives a \textbf{$\gamma$-approximate solution} for the compliment problem.
-      \end{itemize}
-  \end{itemize}
+    A \textbf{$\gamma$-certified algorithm}:
+    \begin{itemize}
+        \item \textbf{Exactly solves all $\gamma$-perturbation-resilient instances}.
+        \item Always returns a \textbf{$\gamma$-approximate solution}.
+        \item Gives a \textbf{$\gamma$-approximate solution} for the compliment problem.
+    \end{itemize}
 \end{frame}
 
 
@@ -1100,7 +1096,7 @@ A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to
             \draw[blue, thick] (5) circle(0.3);
             \draw[blue, thick] (7) circle(0.3);
         \end{tikzpicture}
-        \captionof{figure}{Add $S_2 \cap N^2_G[J]$}
+        \captionof{figure}{$S_2 \cap N^2_G[J]$}
     \end{minipage}
     &
     \begin{minipage}{0.3\textwidth}
@@ -1159,6 +1155,188 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
 
 \end{frame}
 
+\begin{frame}[fragile]{{$(1+\epsilon)$}-Certified Algorithm for FVS-4CL}
+  \begin{algorithm}[H]
+    \caption{$(1+\epsilon)$-Certified algorithm for FVS-4CL}
+    \begin{algorithmic}[1]
+    \REQUIRE Vertex-weighted planar graph $(G, w:V(G) \to \mathbb{N})$, $\epsilon > 0$
+    \ENSURE A vertex set $S^* \subseteq V(G)$ and a $(1+\epsilon)$-perturbation $w'$ of $w$ such that $S^*$ is optimal for FVS-4CL on $(G, w')$
+    \STATE $\kappa \leftarrow \left\lceil \frac{2m}{\epsilon} \right\rceil + 2m$, where $m \leftarrow 2$
+    \STATE Let $S^*$ be a feasible solution (FVS-4CL is guessable)
+    \STATE Perform BFS from an arbitrary vertex $r$
+    \WHILE{there exists a subgraph $J_{\kappa-2m}$ of width $\kappa - 2m$ such that \\ \hspace{1.5em} $w_A((G,w), S^*, J_{\kappa-2m}) < w(S^*)$}
+        \STATE $S^* \leftarrow A((G,w), S^*, J_{\kappa-2m})$
+    \ENDWHILE
+    \STATE Define $w': V(G) \rightarrow \mathbb{R}^+$ by:
+    \[
+    w'(x) = 
+    \begin{cases}
+    w(x) & \text{if } x \in S^* \\
+    (1 + \epsilon)w(x) & \text{otherwise}
+    \end{cases}
+    \]
+    \RETURN $(S^*, w')$
+    \end{algorithmic}
+  \end{algorithm}
+\end{frame}
+
+
+\section{Conclusion}
+
+\begin{frame}{Summary of Contributions}
+\begin{itemize}
+    \item Establish \textbf{EPTAS for FVS-BCL} in planar graphs.
+    \vspace{0.5em}
+    \item Tractability:
+    \begin{itemize}
+      \item Solved the \textbf{FVS-4CL} problem using \textbf{dynamic programming over nice tree decompositions}.
+      \item Solved the \textbf{FVS-BCL} problem using a \textbf{MSOL} formulation.
+    \end{itemize}
+    \vspace{0.5em}
+    \item Designed $(1+\epsilon)$-certified algorithms for \textbf{FVS-4CL} and \textbf{FVS-BCL}
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Future Work}
+  \begin{itemize}
+    \item Extend the DP algorithm over nice tree decompositions to FVS-BCL
+    \vspace{0.5em}
+    \item Improve the current algorithm that has a running time of 
+    $2^{\mathcal{O}(\tw^2)} \cdot n^{\mathcal{O}(1)}$
+    \begin{itemize} 
+    \item Cut \& Count technique, which obtained a 
+    $3^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ randomized algorithm
+    \textbf{(Cygan et al., 2011)}  
+
+    \item Deterministic 
+    $2^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ rank-based approach
+    \textbf{(Bodlaender et al., 2015)}
+    \end{itemize}
+    \vspace{0.5em}
+    \item  Improve the certified algorithm for FVS-BCL. 
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \centering
+  \Huge Thank you!\\
+  \vspace{0.5cm}
+  \Large Questions?
+\end{frame}
+
+\appendix
+\backupbegin
+
+\begin{frame}[plain,noframenumbering]
+  \centering
+  {\Huge Appendix}
+
+  \vspace{2em}
+
+  \Large
+  \begin{itemize}
+      \item \hyperlink{appendix-a1}{A.1 Approximation Schemes}
+      \item \hyperlink{appendix-a2}{A.2 Certified Algorithms}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A.1}
+  \hypertarget{appendix-a1}{}
+  \centering
+  \Huge Appendix Approximation Schemes
+\end{frame}
+
+\begin{frame}{Bounds on the Optimum Solution (Unweighted Case)}
+    \footnotesize
+    \begin{lemma}[Bound on the Optimum Solution in Subgraphs]
+    \label{lemma:opt-unweighted-fvs-4cl}
+
+    Let \( S_{i,j} \) be the minimum unweighted feedback vertex set (FVS-4CL)
+    for subgraph \( G_{i,j} \), computed using 
+    Algorithm~\ref{alg:dp}, and let 
+    \( F \equiv \text{OPT} \) be the optimum solution for the full graph \( G \).
+
+    Define \( F_{i,j} := F \cap V(G_{i,j}) \), i.e., the restriction of the global solution \( F \) to the subgraph \( G_{i,j} \).
+
+    Then:
+    \[
+    |S_{i,j}| \leq |F_{i,j}|
+    \]
+    \end{lemma}
+
+    \begin{result}[Optimum solution bound for the whole graph]
+    \label{result-two}
+
+    Let \( S_i \) be the union of optimal solutions defined on Line~\ref{alg3:line6} of Algorithm~\ref{alg:unweighted_feedback_vertex_set_global} 
+    for some shift \( i \). 
+    Let \( F \equiv \text{OPT} \) be the optimum solution in \( G \) and let \( F_{i,j} = G_{i,j} \cap F \).
+    For those sets it holds that:
+    \[
+    |S_i| \leq \sum_j |S_{i,j}| \leq \sum_j |F_{i,j}|
+    \]
+    \end{result}
+
+\end{frame}
+
+\begin{frame}{Bounds on the Optimum Solution (Unweighted Case)}
+    \footnotesize
+    \begin{lemma}[Bound for the vertices on the boundaries (Unweighted Case)]
+        \label{lemma-two}
+
+        Let $F_i = F \cap \{\text{vertices at levels } i \bmod \ell\}$. 
+        The sets $F_i$ are disjoint and $\bigcup_i F_i = F$.
+
+        We claim that:
+        \[
+            \exists q \in \{0, 1, \dots, \ell-1\} : |F_q| + |F_{q+1}| \leq \frac{2}{\ell} \cdot |F| \text{.}
+        \]
+    \end{lemma}
+
+    \begin{lemma}[Bound for the cardinality of the intersection sets]
+    \label{lemma-three}
+    Let \( F \equiv \text{OPT} \) be the optimal solution and \( F_{i,j} = F \cap G_{i,j} \) be the intersection 
+    sets with the subgraphs. Then we have: 
+    \[
+    \sum_j |F_{i^*, j}| \leq |F| + \frac{2}{\ell} \cdot |F|
+    \]
+    for some specific integer \( i^* \).
+    \end{lemma}
+
+    \[
+    |S_{i^*}| \leq \sum\limits_{j} |S_{i^*, j}| \leq \sum\limits_{j} |F_{i^*, j}| \leq (1 + \frac{2}{\ell}) \cdot |F| = (1 + 2\epsilon)\cdot\left|F\right|
+    \]
+
+\end{frame}
+
+\begin{frame}{A.2}
+  \hypertarget{appendix-a2}{}
+  \centering
+  \Huge Appendix Certified Algorithms
+\end{frame}
+
+\begin{frame}{Meta-Theorem for Minor-Closed Graph Classes}
+
+\begin{theorem}[Meta-Theorem for Minor-Closed Graph Classes]
+Let $\mathcal{G}$ be a minor-closed graph class whose local treewidth is bounded by $g(r) = \lambda \cdot r$, for fixed $\lambda \in \mathbb{R}$ and $r \in \mathbb{N}$.
+
+Let $\Pi$ be a vertex-minimization problem such that:
+\begin{enumerate}
+    \item $\Pi$ is guessable.
+    \item $\Pi$ is m-stitchable.
+    \item There exists an algorithm $A_\Pi$ that solves $\Pi$-$m$-stitching in time 
+    $f(t) \cdot |V(G)|^{\mathcal{O}(1)}$, where $t = \tw(G[N_G^m(J)])$ and $f$ is computable.
+\end{enumerate}
+
+Then, for each $\epsilon > 0$, there exists a $(1 + \epsilon)$-certified algorithm for $\Pi$ 
+running in time $f(\lambda \cdot m / \epsilon) \cdot |V(G)|^{\mathcal{O}(1)}$ on any input 
+$(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounded weights.
+\end{theorem}
+
+\end{frame}
+
 \begin{frame}{Guessable Problems}
     \begin{definition}[Guessable]
         A problem $\Pi$ is \emph{guessable} if there is an algorithm that outputs a 
@@ -1171,8 +1349,8 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
     This set is $F \leftarrow V$ for a graph $G = (V, E)$.
 \end{frame}
 
-\begin{frame}{Lemma: FVS-BCL is 2-stitchable}
-  \begin{lemma}[FVS-BCL is 2-stitchable]
+\begin{frame}{Lemma: FVS-4CL is 2-stitchable}
+  \begin{lemma}[FVS-4CL is 2-stitchable]
     Let $(G, w)$ be any instance of the FVS-4CL problem, let $J \subseteq V(G)$ be a subset
     of the vertices in the graph, and let $S_1$ and $S_2$ be any two feasible solutions 
     to the problem in $G$. Then the set
@@ -1698,77 +1876,7 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
 
 \end{frame}
 
-\begin{frame}[fragile]{{$(1+\epsilon)$}-Certified Algorithm for FVS-4CL}
-  \begin{algorithm}[H]
-    \caption{$(1+\epsilon)$-Certified algorithm for FVS-4CL}
-    \begin{algorithmic}[1]
-    \REQUIRE Vertex-weighted planar graph $(G, w:V(G) \to \mathbb{N})$, $\epsilon > 0$
-    \ENSURE A vertex set $S^* \subseteq V(G)$ and a $(1+\epsilon)$-perturbation $w'$ of $w$ such that $S^*$ is optimal for FVS-4CL on $(G, w')$
-    \STATE $\kappa \leftarrow \left\lceil \frac{2m}{\epsilon} \right\rceil + 2m$, where $m \leftarrow 2$
-    \STATE Let $S^*$ be a feasible solution (FVS-4CL is guessable)
-    \STATE Perform BFS from an arbitrary vertex $r$
-    \WHILE{there exists a subgraph $J_{\kappa-2m}$ of width $\kappa - 2m$ such that \\ \hspace{1.5em} $w_A((G,w), S^*, J_{\kappa-2m}) < w(S^*)$}
-        \STATE $S^* \leftarrow A((G,w), S^*, J_{\kappa-2m})$
-    \ENDWHILE
-    \STATE Define $w': V(G) \rightarrow \mathbb{R}^+$ by:
-    \[
-    w'(x) = 
-    \begin{cases}
-    w(x) & \text{if } x \in S^* \\
-    (1 + \epsilon)w(x) & \text{otherwise}
-    \end{cases}
-    \]
-    \RETURN $(S^*, w')$
-    \end{algorithmic}
-  \end{algorithm}
-\end{frame}
+\backupend
 
-
-\section{Conclusion}
-
-\begin{frame}{Summary of Contributions}
-\begin{itemize}
-    \item Applied \textbf{Baker's technique} to establish an 
-    \textbf{EPTAS for the FVS-BCL and FVS-4CL problems} in planar graphs.
-    
-    \item Proved that the \textbf{FVS-4CL problem is tractable} via 
-    \textbf{dynamic programming over nice tree decompositions}, and that the 
-    \textbf{FVS-BCL problem is tractable} via a formulation in 
-    \textbf{monadic second-order logic (MSOL)}.
-    
-    \item Designed an algorithm for computing 
-    \textbf{(1 + $\varepsilon$)-certified solutions} for both problems.
-
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Future Work}
-  \begin{itemize}
-    \item Extend the DP algorithm over nice tree decompositions to FVS-BCL
-    \item Improve the current algorithm that has a running time of 
-    $2^{\mathcal{O}(\tw^2)} \cdot n^{\mathcal{O}(1)}$
-    \begin{itemize} 
-    \item Cut \& Count technique, which obtained a 
-    $3^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ randomized algorithm
-    \textbf{(Cygan et al., 2011)}  
-
-    \item Deterministic 
-    $2^{\mathcal{O}(\tw)} \cdot n^{\mathcal{O}(1)}$ rank-based approach
-    \textbf{(Bodlaender et al., 2015)}
-
-    \end{itemize}
-    \item  Improve the certified algorithm for FVS-BCL. 
-    In particular, it would be valuable to develop an approach that eliminates the current 
-    reliance on the polynomially-bounded weights constraint
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \centering
-  \Huge Thank you!\\
-  \vspace{0.5cm}
-  \Large Questions?
-\end{frame}
 
 \end{document}

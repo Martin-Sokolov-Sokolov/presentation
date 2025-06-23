@@ -1,23 +1,16 @@
-\frametitle{{$(1+\epsilon )$}-Certified Algorithm for FVS-4CL}
+\frametitle{Stitch-FVS-4CL Algorithm}
 \begin{algorithm}[H]
-    \caption{$(1+\epsilon)$-Certified algorithm for FVS-4CL}
+  \caption{Stitch-FVS-4CL}
     \begin{algorithmic}[1]
-    \REQUIRE Vertex-weighted planar graph $(G, w:V(G) \to \mathbb{N})$, $\epsilon > 0$
-    \ENSURE A vertex set $S^* \subseteq V(G)$ and a $(1+\epsilon)$-perturbation $w'$ of $w$ such that $S^*$ is optimal for FVS-4CL on $(G, w')$
-    \STATE $\kappa \leftarrow \left\lceil \frac{2m}{\epsilon} \right\rceil + 2m$, where $m \leftarrow 2$
-    \STATE Let $S^*$ be a feasible solution (FVS-4CL is guessable)
-    \STATE Perform BFS from an arbitrary vertex $r$
-    \WHILE{there exists a subgraph $J_{\kappa-2m}$ of width $\kappa - 2m$ such that \\ \hspace{1.5em} $w_A((G,w), S^*, J_{\kappa-2m}) < w(S^*)$}
-        \STATE $S^* \leftarrow A((G,w), S^*, J_{\kappa-2m})$
-    \ENDWHILE
-    \STATE Define $w': V(G) \rightarrow \mathbb{R}^+$ by:
-    \[
-    w'(x) =
-    \begin{cases}
-    w(x) & \text{if } x \in S^* \\
-    (1 + \epsilon)w(x) & \text{otherwise}
-    \end{cases}
-    \]
-    \RETURN $(S^*, w')$
+      \REQUIRE Vertex-weighted planar graph $(G, w:V(G) \to \mathbb{N})$, a feasible solution $S_1$ on $G$, and a vertex set $J \subseteq V(G)$
+      \ENSURE Feasible solution $S'$ on $G$, such that for all feasible solutions $S^*$,\\
+      \hspace{0.5em} $w(S') \leq w(S^* \oplus^{2}_{G,J} S_1)$
+      \STATE $H \leftarrow G[N^{2}_{G}[J] \setminus (S_1 \setminus J)]$
+      \STATE Let $S_2$ be the output of algorithm $A$ on input $(H, w)$
+      \IF{$w(S_2 \oplus^{2}_{G,J} S_1) < w(S_1)$}
+          \RETURN $S_2 \oplus^{2}_{G,J} S_1$
+      \ELSE
+          \RETURN $S_1$
+      \ENDIF
     \end{algorithmic}
   \end{algorithm}

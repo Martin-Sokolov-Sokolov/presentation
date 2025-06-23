@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1750590408.92914 "c:/Users/marts/Desktop/thesis-program/presentation_latex/presentation.tex" "presentation.pdf" "presentation" 1750590419.19469 2
+["pdflatex"] 1750720822.81893 "c:/Users/marts/Desktop/thesis-program/presentation_latex/presentation.tex" "presentation.pdf" "presentation" 1750720831.72682 0
   "C:/Users/marts/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1749388492 82686 2381c3433487640bf26aa76a10db7eb2 ""
   "C:/Users/marts/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1726227953 24265333 dc204a6a89dd31cebff2d55d0ebe4b18 ""
   "C:/Users/marts/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -281,13 +281,13 @@
   "C:/Users/marts/AppData/Local/Programs/MiKTeX/tex/latex/varwidth/varwidth.sty" 1238469540 10894 d359a13923460b2a73d4312d613554c8 ""
   "C:/Users/marts/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "C:/Users/marts/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "c:/Users/marts/Desktop/thesis-program/presentation_latex/presentation.tex" 1750590384 74088 1e00644c7236812b416ce179e90639d1 ""
-  "presentation.aux" 1750590416 12143 14adccb56aab60ec93bc29551aa036a1 "pdflatex"
-  "presentation.nav" 1750590416 5979 be22cfb2069ae4d521f995cb98f789c3 "pdflatex"
-  "presentation.out" 1750590416 763 b7ad7700e9cc0fc9d0e597b677df83e4 "pdflatex"
-  "presentation.tex" 1750590384 74088 1e00644c7236812b416ce179e90639d1 ""
-  "presentation.toc" 1750590416 336 1581c1ba36234c0376f26483d62e5b80 "pdflatex"
-  "presentation.vrb" 1750590415 1106 489830ff5f104158e688b68336c02b22 "pdflatex"
+  "c:/Users/marts/Desktop/thesis-program/presentation_latex/presentation.tex" 1750720820 77018 1663883b93464c499eef92e0bfd6c93f ""
+  "presentation.aux" 1750720831 11469 9ae4bc7eb50b720ec0f6ffec2009d8f4 "pdflatex"
+  "presentation.nav" 1750720831 5872 c1e4425344d15383a9c58088cd19894e "pdflatex"
+  "presentation.out" 1750720831 844 769866d1ff61f8321f6fd742cb9ed742 "pdflatex"
+  "presentation.tex" 1750720820 77018 1663883b93464c499eef92e0bfd6c93f ""
+  "presentation.toc" 1750720831 289 ab472556168dd2d2544414899050edfc "pdflatex"
+  "presentation.vrb" 1750720829 738 46f9bb226954ab960ed362dfccf60693 "pdflatex"
   (generated)
   "presentation.aux"
   "presentation.log"
