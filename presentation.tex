@@ -42,8 +42,8 @@
 \begin{frame}{Problems Studied (Emphasis on Focus Areas)}
 
 \begin{itemize}
-    \item Dominating Set
-    \item \textcolor{red!50}{Feedback Vertex Set (FVS)}
+    \item Dominating Set - BWCA is studied
+    \item \textcolor{red!50}{Feedback Vertex Set (FVS)} - Approximation is studied
     \item \textcolor{red}{Feedback Vertex Set with Four Cycle Length (FVS-4CL)}
     \item \textcolor{red}{Feedback Vertex Set with Bounded Cycle Length (FVS-BCL)}
     \item $r$-Dominating Set ($r$-DS)
@@ -362,7 +362,7 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
     \end{lemma}
 
     \[
-    |S_{i^*}| \leq \sum\limits_{j} |S_{i^*, j}| \leq \sum\limits_{j} |F_{i^*, j}| \leq |F| + \frac{2}{\ell} \cdot |F| = (1 + \frac{2}{\ell}) \cdot |F|
+    |S_{i^*}| \leq \sum\limits_{j} |S_{i^*, j}| \leq \sum\limits_{j} |F_{i^*, j}| \leq (1 + \frac{2}{\ell}) \cdot |F| = (1 + 2\epsilon)\cdot\left|F\right|
     \]
 
 \end{frame}
@@ -371,7 +371,7 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
 
 \textbf{Weighted FVS-4CL:}
 \[
-w(S_{i^*}) \leq \sum\limits_j w(S_{i^*, j}) \leq \sum\limits_j w(F_{i^*, j}) \leq w(F) + \frac{2}{\ell} \cdot w(F) = \left(1 + \frac{2}{\ell}\right) \cdot w(F)
+w(S_{i^*}) \leq \sum\limits_j w(S_{i^*, j}) \leq \sum\limits_j w(F_{i^*, j}) \leq \left(1 + \frac{2}{\ell}\right) \cdot w(F) = \left(1+2\epsilon\right)\cdot w(F)
 \]
 
 \vspace{1em}
@@ -396,7 +396,7 @@ w(S_{i^*}) \leq \sum\limits_j w(S_{i^*, j}) \leq \sum\limits_j w(F_{i^*, j}) \le
 \begin{frame}{Fixed-Parameter Tractability of FVS-BCL}
   \begin{itemize}
     \item Monadic Second Order Logic for FVS-BCL
-    \item Dynamic Programming Algorithm for FVS-BCL using Nice Tree Decompositions
+    \item Dynamic Programming Algorithm for FVS-4CL using Nice Tree Decompositions
   \end{itemize}
 \end{frame}
 
@@ -470,7 +470,7 @@ Assume that $\phi$ is a MSOL formula and $G$ is an $n$-vertex graph, with an eva
 of all free variables of $\phi$. Suppose a tree decomposition of $G$ of width $t$ is given. 
 Then there exists an algorithm that verifies whether $\phi$ is satisfied in $G$ in time:
 \[
-    f(\|\phi\|, t) \cdot n^{\mathcal{O}(1)}
+    f(\|\phi\|, t) \cdot n
 \]
 for some computable function $f$.
 \end{theorem}
@@ -480,7 +480,7 @@ for some computable function $f$.
 Let $\rho \ge 3$ be a constant and $G = (V,E)$ be a graph of treewidth at most $\tw$, with vertex-weight function $w : V \to \mathbb{N}$.
 Then the minimum-weight set breaking all $\rho$-cycles (FVS-$\rho$CL) can be computed in time:
 \[
-    f(\rho, \tw) \cdot n^{\mathcal{O}(1)}
+    f(\rho, \tw) \cdot n
 \]
 for some computable function $f$ depending only on $\rho$ and $\tw$.
 \end{corollary}
@@ -507,13 +507,14 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
     \item \textbf{Characteristic of a Partial Solution:} For \(X_i\), vertices are partitioned as:
     \begin{itemize}
         \item \(I \subseteq X_i\): vertices in the partial solution.
-        \item \(\mathcal{F} \subseteq X_i \times X_i\): pairs \((v,u)\) with a common neighbour \(w \in V_i \setminus X_i\) not in \(F_i\).
+        \item $\mathcal{F} = \{(v,u) \in X_i \times X_i : \exists w \in V_i \setminus X_i, (v,w), (u,w) \in E_i, w \notin F_i \}$
+        
     \end{itemize}
     \[
-    ch(G_i, F_i) = \big(I, \{(v,u) \in X_i \times X_i : \exists w \in V_i \setminus X_i, (v,w), (u,w) \in E_i, w \notin F_i \}\big)
+    ch(G_i, F_i) = \big(I, \mathcal{F}\big)
     \]
 
-    The valuation table \(c[i, I, \mathcal{F}] \in \mathbb{N} \cup \{\infty\}\) gives the minimum weight of partial solution \(F_i\):
+    The valuation table \(c[i, I, \mathcal{F}] \in \mathbb{N} \cup \{\infty\}\) gives the min. weight of \(F_i\):
     \[
     c[i, I, \mathcal{F}] = \min \{ w(W) : W \text{ is a FVS-4CL of } G_i \land W \cap X_i = I \}
     \]
@@ -708,9 +709,9 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
     \hline
     % Forget a
     4 & \( \{ b, d \} \) & \( \emptyset \) & 6 \\
-    4 & \( \{ b, d \} \) & \( \{ b, d \} \) & 5 \\
+    4 & \( \{ b, d \} \) & \( \{ (b, d) \} \) & 5 \\
     4 & \( \{ b \} \) & \( \emptyset \) & 4 \\
-    4 & \( \{ b \} \) & \( \{ b, d \} \) & 3 \\
+    4 & \( \{ b \} \) & \( \{ (b, d) \} \) & 3 \\
 
     \hline
     \end{tabular}
@@ -723,27 +724,27 @@ for some computable function $f$ depending only on $\rho$ and $\tw$.
     \textbf{\(i\)} & \textbf{\(I\)} & \textbf{\(\mathcal{F}\)} & \textbf{Value} \\
     \hline
     4 & \( \{ d \} \) & \( \emptyset \) & 3 \\
-    4 & \( \{ d \} \) & \( \{ b, d \} \) & 2 \\
+    4 & \( \{ d \} \) & \( \{ (b, d) \} \) & 2 \\
     4 & \( \emptyset \) & \( \emptyset \) & 1 \\
-    4 & \( \emptyset \) & \( \{ b, d \} \) & 0 \\
+    4 & \( \emptyset \) & \( \{ (b, d) \} \) & 0 \\
     \hline
         % Introduce c
     5 & \( \{ b, c, d \} \) & \( \emptyset \) & 10 \\
-    5 & \( \{ b, c, d \} \) & \( \{ b,d \} \) & 9 \\
+    5 & \( \{ b, c, d \} \) & \( \{ (b,d) \} \) & 9 \\
     5 & \( \{ b, d \} \) & \( \emptyset \) & 6 \\
-    5 & \( \{ b, d \} \) & \( \{ b, d \} \) & 5 \\
+    5 & \( \{ b, d \} \) & \( \{ (b, d) \} \) & 5 \\
     5 & \( \{ b, c \} \) & \( \emptyset \) & 8 \\
-    5 & \( \{ b, c \} \) & \( \{ b, d \} \) & 7 \\
+    5 & \( \{ b, c \} \) & \( \{ (b, d) \} \) & 7 \\
     5 & \( \{ b \} \) & \( \emptyset \) & 4 \\
-    5 & \( \{ b \} \) & \( \{ b, d \} \) & 3 \\
+    5 & \( \{ b \} \) & \( \{ (b, d) \} \) & 3 \\
     5 & \( \{ c, d \} \) & \( \emptyset \) & 7 \\
-    5 & \( \{ c, d \} \) & \( \{ b, d \} \) & 6 \\
+    5 & \( \{ c, d \} \) & \( \{ (b, d) \} \) & 6 \\
     5 & \( \{ d \} \) & \( \emptyset \) & 3 \\
-    5 & \( \{ d \} \) & \( \{ b, d \} \) & 2 \\
+    5 & \( \{ d \} \) & \( \{ (b, d) \} \) & 2 \\
     5 & \( \{ c \} \) & \( \emptyset \) & 5 \\
-    5 & \( \{ c \} \) & \( \{ b, d \} \) & 4 \\
+    5 & \( \{ c \} \) & \( \{ (b, d) \} \) & 4 \\
     5 & \( \emptyset \) & \( \emptyset \) & 1 \\
-    5 & \( \emptyset \) & \( \{ b, d \} \) & \( \infty \) \\
+    5 & \( \emptyset \) & \( \{ (b, d) \} \) & \( \infty \) \\
     \hline
     \end{tabular}
   \end{minipage}
@@ -927,7 +928,11 @@ A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to
 \end{frame}
 
 \begin{frame}{Illustration of $2$-stitching}
+\vspace{-1.5em}
 \footnotesize
+\[
+  S_3 := (S_1 \setminus J) \cup (S_2 \cap N^{2}_{G}[J]).
+\]
 \centering
 \begin{tabular}{ccc}
     \begin{minipage}{0.3\textwidth}
@@ -1020,7 +1025,7 @@ A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to
         \end{tikzpicture}
         \captionof{figure}{$J$ and $N^2_G[J]$}
     \end{minipage}
-    \\
+    \\[-1em]
     \begin{minipage}{0.3\textwidth}
         \centering
         % Figure 4
@@ -1055,7 +1060,7 @@ A \textbf{$\gamma$-certified algorithm} for $\Pi$ maps each instance $(G, w)$ to
             \draw[red, thick] (4) circle(0.3);
 
         \end{tikzpicture}
-        \captionof{figure}{Remove $J$ from $S_1$}
+        \captionof{figure}{$S_1 \backslash J$}
     \end{minipage}
     &
     \begin{minipage}{0.3\textwidth}
@@ -1149,6 +1154,8 @@ Then, for each $\epsilon > 0$, there exists a $(1 + \epsilon)$-certified algorit
 running in time $f(\lambda \cdot m / \epsilon) \cdot |V(G)|^{\mathcal{O}(1)}$ on any input 
 $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounded weights.
 \end{theorem}
+
+\hfill {\small \textbf{(Bumpus et al., 2024)}}
 
 \end{frame}
 
