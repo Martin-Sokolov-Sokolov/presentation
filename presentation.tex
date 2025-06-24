@@ -41,11 +41,58 @@
 
 \section{Problem Overview}
 
-\begin{frame}{Problems Studied (Emphasis on Focus Areas)}
+\begin{frame}{Certified Algorithms for Combinatorial Optimization}
 
 \begin{itemize}
     \item Dominating Set - BWCA is studied
     \item \textcolor{red!50}{Feedback Vertex Set (FVS)} - Approximation is studied
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Approximation Algorithms for Feedback Vertex Set (FVS)}
+
+\begin{itemize}
+    \item \textbf{$\min\{2\Delta^2,\ 4 \log n\}$ where $\Delta$ is the max. degree in $G$. (Bar-Yehuda et al., 1994)}\\
+    \small Primal-dual algorithm on undirected graphs with general vertex weights.
+
+    \item \textbf{2-Approximation (Bafna et al., 1995)}\\
+    \small Local ratio technique with improved efficiency.
+    
+    \item \textbf{2-Approximation (Becker and Geiger, 1996)}\\
+    \small Greedy-like approximation algorithm.
+
+    \item \textbf{2-Approximation (Chudak et al., 1998)}\\
+    \small A primal-dual algorithm.
+    
+\end{itemize}
+
+\begin{itemize}
+  \item \textbf{Hardness: APX-Complete (Dinur and Safra, 2005)}\\
+    \small NP-hard to approximate within a factor better than 1.36 via reduction from Vertex Cover.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Approximation Algorithms for Feedback Vertex Set (FVS) in planar graphs}
+
+\begin{itemize}
+    \item \textbf{PTAS for FVS (Kleinberg and Kumar, 2001)}
+    \item \textbf{PTAS for FVS (Le and Zheng, 2020)}\\
+    \small Using a local search heuristic
+    \item \textbf{EPTAS for unweighted FVS (Demaine and Hajiaghayi)}\\
+    \small Using bidimensionality
+    \item \textbf{PTAS for weighted FVS (Cohen-Addad et al., 2016)}\\
+    \small Reduction from weighted feedback vertex set
+ to vertex-weighted connected dominating set
+    \item \textbf{EPTAS for weighted FVS (\textcolor{red}{Open question.})}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Problems Studied (Emphasis on Focus Areas)}
+
+\begin{itemize}
     \item \textcolor{red}{Feedback Vertex Set with Four Cycle Length (FVS-4CL)}
     \item \textcolor{red}{Feedback Vertex Set with Bounded Cycle Length (FVS-BCL)}
     \item $r$-Dominating Set ($r$-DS)
@@ -60,7 +107,7 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
 
 \begin{frame}{FVS-4CL on a 5x5 grid}
   \centering
-  \begin{tikzpicture}[scale=1.2, every node/.style={circle, draw, minimum size=6mm},
+  \begin{tikzpicture}[scale=1.1, every node/.style={circle, draw, minimum size=6mm},
                       rednode/.style={circle, draw=red, fill=red!30, thick, minimum size=6mm},
                       font=\small]
 
@@ -108,45 +155,19 @@ We aim to generalize results to \textcolor{red}{\textbf{FVS-BCL}}.\\
   }
 
   \end{tikzpicture}
-\end{frame}
 
-\begin{frame}{Approximation Algorithms for Feedback Vertex Set (FVS)}
+  \footnotesize
+  \begin{definition}[Feedback Vertex Set with Four Cycle Length (\textbf{FVS-4CL})]
 
-\begin{itemize}
-    \item \textbf{$\min\{2\Delta^2,\ 4 \log n\}$ where $\Delta$ is the max. degree in $G$. (Bar-Yehuda et al., 1994)}\\
-    \small Primal-dual algorithm on undirected graphs with general vertex weights.
+      \label{FVS}
+      \textbf{Input:}
+      A graph $G$ and an integer $k$.
 
-    \item \textbf{2-Approximation (Bafna et al., 1995)}\\
-    \small Local ratio technique with improved efficiency.
-    
-    \item \textbf{2-Approximation (Becker and Geiger, 1996)}\\
-    \small Greedy-like approximation algorithm.
-
-    \item \textbf{2-Approximation (Chudak et al., 1998)}\\
-    \small A primal-dual algorithm.
-    
-\end{itemize}
-
-\begin{itemize}
-  \item \textbf{Hardness: APX-Complete (Dinur and Safra, 2005)}\\
-    \small NP-hard to approximate within a factor better than 1.36 via reduction from Vertex Cover.
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Approximation Algorithms for Feedback Vertex Set (FVS) in planar graphs}
-
-\begin{itemize}
-    \item \textbf{PTAS for FVS (Kleinberg and Kumar, 2001)}
-    \item \textbf{PTAS for FVS (Le and Zheng, 2020)}\\
-    \small Using a local search heuristic
-    \item \textbf{EPTAS for unweighted FVS (Demaine and Hajiaghayi)}\\
-    \small Using bidimensionality
-    \item \textbf{PTAS for weighted FVS (Cohen-Addad et al., 2016)}\\
-    \small Reduction from weighted feedback vertex set
- to vertex-weighted connected dominating set
-    \item \textbf{EPTAS for weighted FVS (\textcolor{red}{Open question.})}
-\end{itemize}
+      \textbf{Question:}
+      Does there exist a set $X$ of at most $k$ vertices of $G$ such that $G - X$ does not contain 
+      any $C_4$?
+      
+  \end{definition}
 
 \end{frame}
 
