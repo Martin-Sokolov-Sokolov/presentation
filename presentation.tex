@@ -1260,7 +1260,8 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
   \Large
   \begin{itemize}
       \item \hyperlink{appendix-a1}{A.1 Approximation Schemes}
-      \item \hyperlink{appendix-a2}{A.2 Certified Algorithms}
+      \item \hyperlink{appendix-a2}{A.2 Tractability}
+      \item \hyperlink{appendix-a3}{A.3 Certified Algorithms}
   \end{itemize}
 \end{frame}
 
@@ -1334,6 +1335,190 @@ $(G, w : V(G) \to \mathbb{N})$, with $G \in \mathcal{G}$ and polynomially-bounde
 
 \begin{frame}{A.2}
   \hypertarget{appendix-a2}{}
+  \centering
+  \Huge Appendix Tractability
+\end{frame}
+
+
+\begin{frame}{Rhombus Graph and second Nice Tree Decomposition}
+  \footnotesize
+  \begin{minipage}{0.4\textwidth} % Slightly more space
+      \centering
+      \begin{tikzpicture}
+        % Reduced scale and node size to ensure it fits
+        \tikzstyle{vertex}=[scale=1, circle, draw, minimum size=10pt] 
+
+        \node[vertex] (a) at (0, 0) {\huge a};
+        \node[vertex] (b) at (-1, 1) {\huge b};
+        \node[vertex] (c) at (0, 2) {\huge c};
+        \node[vertex] (d) at (1, 1) {\huge d};
+
+        \draw (a) -- (b);
+        \draw (b) -- (c);
+        \draw (c) -- (d);
+        \draw (d) -- (a);
+
+        \node[below=0.1cm of a] {\small $1$};
+        \node[left=0.1cm of b] {\small $3$};
+        \node[above=0.1cm of c] {\small $4$};
+        \node[right=0.1cm of d] {\small $2$};
+      \end{tikzpicture}
+      \vspace{2mm} % Optional space
+      \textbf{Rhombus Graph $G$}
+  \end{minipage}%
+  \begin{minipage}{0.2\textwidth} % Slightly more space
+      \begin{tikzpicture}[
+        every node/.style={
+            draw, rounded corners, align=left, 
+            font=\scriptsize, 
+            text width=2cm, % Reduced text width is the key fix
+            inner sep=1.5pt
+        }, 
+        level distance=0.9cm,
+        sibling distance = 3cm,
+        scale=0.92, transform shape % Slightly reduced scale
+      ]
+        \node (root) {\{ \} \\ Root \hfill \scriptsize(13) }
+                child { node (f_d) {\{ \} \\ Forget $d$ \hfill \scriptsize(12)}
+                    child { node (f_b) {\{d\} \\ Forget $b$ \hfill \scriptsize(11)}
+                        child { node (join) {\{b,d\} \\ Join \hfill \scriptsize(10)}
+                            child { node (path1) {\{b,d\} \\ Forget $a$ \hfill \scriptsize(4)}
+                                child { node (i_b1) {\{a,b,d\} \\ Introduce $d$ \hfill \scriptsize(3)}
+                                    child { node (i_d1) {\{a,b\} \\ Introduce $b$ \hfill \scriptsize(2)}
+                                        child { node (i_a) {\{a\} \\ Introduce $a$ \hfill \scriptsize(1)}
+                                            child { node (leaf1) {\{ \} \\ Leaf \hfill \scriptsize(0)} }
+                                        }
+                                    }
+                                }
+                            }
+                        child { node (path2) {\{b,d\} \\ Forget $c$ \hfill \scriptsize(9)}
+                            child { node (i_b2) {\{c,b,d\} \\ Introduce $d$ \hfill \scriptsize(8)}
+                                child { node (i_d2) {\{c,b\} \\ Introduce $b$ \hfill \scriptsize(7)}
+                                    child { node (i_c) {\{c\} \\ Introduce $c$ \hfill \scriptsize(6)}
+                                        child { node (leaf2) {\{ \} \\ Leaf \hfill \scriptsize(5)} }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+      \end{tikzpicture}
+  \end{minipage}%
+\end{frame}
+
+
+
+\begin{frame}{Rhombus graph and second Nice Tree Decomposition}
+  
+  \begin{minipage}{0.33\textwidth}
+    \renewcommand{\arraystretch}{0.3}
+    \setlength{\tabcolsep}{0.7pt} 
+    \begin{tabular}{|c| >{\footnotesize}c | >{\footnotesize}c | >{\footnotesize}c |}
+    \hline
+    \textbf{\(i\)} & \textbf{\(I\)} & \textbf{\(\mathcal{F}\)} & \textbf{Value} \\
+    \hline
+      0 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+      \hline
+      1 & $\{a\}$ & $\emptyset$ & \textbf{1} \\
+      1 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+      \hline
+      2 & $\{a,b\}$ & $\emptyset$ & \textbf{4} \\
+      2 & $\{a\}$ & $\emptyset$ & \textbf{1} \\
+      2 & $\{b\}$ & $\emptyset$ & \textbf{3} \\
+      2 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+      \hline
+      3 & $\{a,b,d\}$ & $\emptyset$ & \textbf{6} \\
+      3 & $\{a,b\}$ & $\emptyset$ & \textbf{4} \\
+      3 & $\{a,d\}$ & $\emptyset$ & \textbf{3} \\
+      3 & $\{b,d\}$ & $\emptyset$ & \textbf{5} \\
+      3 & $\{a\}$ & $\emptyset$ & \textbf{1} \\
+      3 & $\{b\}$ & $\emptyset$ & \textbf{3} \\
+      3 & $\{d\}$ & $\emptyset$ & \textbf{2} \\
+      3 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+      \hline
+      4 & $\{b,d\}$ & $\emptyset$ & \textbf{6} \\
+      4 & $\{b,d\}$ & $\{b,d\}$ & \textbf{5} \\
+      4 & $\{b\}$ & $\emptyset$ & \textbf{4} \\
+      4 & $\{b\}$ & $\{b,d\}$ & \textbf{3} \\
+      4 & $\{d\}$ & $\emptyset$ & \textbf{3} \\
+      4 & $\{d\}$ & $\{b,d\}$ & \textbf{2} \\
+      4 & $\emptyset$ & $\emptyset$ & \textbf{1} \\
+      4 & $\emptyset$ & $\{b,d\}$ & \textbf{0} \\
+
+    \hline
+    \end{tabular}
+  \end{minipage}
+  \begin{minipage}{0.3\textwidth}
+    \renewcommand{\arraystretch}{0.3} 
+    \setlength{\tabcolsep}{0.7pt} 
+    \begin{tabular}{|c| >{\footnotesize}c | >{\footnotesize}c | >{\footnotesize}c |}
+    \hline
+    \textbf{\(i\)} & \textbf{\(I\)} & \textbf{\(\mathcal{F}\)} & \textbf{Value} \\
+    \hline
+    5 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+    \hline
+    6 & $\{c\}$ & $\emptyset$ & \textbf{4} \\
+    6 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+    \hline
+    7 & $\{c,b\}$ & $\emptyset$ & \textbf{7} \\
+    7 & $\{c\}$ & $\emptyset$ & \textbf{4} \\
+    7 & $\{b\}$ & $\emptyset$ & \textbf{3} \\
+    7 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+    \hline
+    8 & $\{c,b,d\}$ & $\emptyset$ & \textbf{9} \\
+    8 & $\{c,b\}$ & $\emptyset$ & \textbf{7} \\
+    8 & $\{c,d\}$ & $\emptyset$ & \textbf{6} \\
+    8 & $\{b,d\}$ & $\emptyset$ & \textbf{5} \\
+    8 & $\{c\}$ & $\emptyset$ & \textbf{4} \\
+    8 & $\{b\}$ & $\emptyset$ & \textbf{3} \\
+    8 & $\{d\}$ & $\emptyset$ & \textbf{2} \\
+    8 & $\emptyset$ & $\emptyset$ & \textbf{0} \\
+    \hline
+    9 & $\{b,d\}$ & $\emptyset$ & \textbf{9} \\
+    9 & $\{b,d\}$ & $\{b,d\}$ & \textbf{5} \\
+    9 & $\{b\}$ & $\emptyset$ & \textbf{7} \\
+    9 & $\{b\}$ & $\{b,d\}$ & \textbf{3} \\
+    9 & $\{d\}$ & $\emptyset$ & \textbf{6} \\
+    9 & $\{d\}$ & $\{b,d\}$ & \textbf{2} \\
+    9 & $\emptyset$ & $\emptyset$ & \textbf{4} \\
+    9 & $\emptyset$ & $\{b,d\}$ & \textbf{0} \\
+    \hline
+    \end{tabular}
+  \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+    \renewcommand{\arraystretch}{0.3} 
+    \setlength{\tabcolsep}{0.7pt} 
+    \begin{tabular}{|c| >{\footnotesize}c | >{\footnotesize}c | >{\footnotesize}c |}
+    \hline
+    \textbf{\(i\)} & \textbf{\(I\)} & \textbf{\(\mathcal{F}\)} & \textbf{Value} \\
+    \hline
+    10 & $\{b,d\}$ & $\emptyset$ & \textbf{10} \\
+    10 & $\{b,d\}$ & $\{b,d\}$ & \textbf{5} \\
+    10 & $\{b\}$ & $\emptyset$ & \textbf{8} \\
+    10 & $\{b\}$ & $\{b,d\}$ & \textbf{3} \\
+    10 & $\{d\}$ & $\emptyset$ & \textbf{7} \\
+    10 & $\{d\}$ & $\{b,d\}$ & \textbf{2} \\
+    10 & $\emptyset$ & $\emptyset$ & \textbf{5} \\
+    10 & $\emptyset$ & $\{b,d\}$ & \textbf{1} \\
+    \hline
+    11 & $\{d\}$ & $\emptyset$ & \textbf{2} \\
+    11 & $\emptyset$ & $\emptyset$ & \textbf{1} \\
+    \hline
+    12 & $\emptyset$ & $\emptyset$ & \textbf{1} \\
+    \hline
+    13 & $\emptyset$ & $\emptyset$ & \textbf{1} \\
+    \hline
+    \end{tabular}
+  \end{minipage}
+
+\end{frame}
+
+
+
+
+\begin{frame}{A.3}
+  \hypertarget{appendix-a3}{}
   \centering
   \Huge Appendix Certified Algorithms
 \end{frame}
